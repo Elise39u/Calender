@@ -1,4 +1,10 @@
+body {
+    background-color:  #0038E8;
+    color: #FFF800;
+}
+
 table {
+    background-color: #E800C9;
     border-collapse: collapse;
     width:450px;
     height:450px;
@@ -29,4 +35,14 @@ a.button {
 
     text-decoration: none;
     color: initial;
+}
+
+a {
+    color: #FFF800;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0038E8;
+    text-decoration: underline;
 }
