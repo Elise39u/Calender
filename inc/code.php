@@ -19,14 +19,36 @@ if ($link->connect_errno) {
 	}
 }
 
-function MakeMonth($month) {
-	foreach ($month as $months) { 
-		echo $months = date('F', mktime(0, 0, 0, $months, 10)); echo "<br/>";
+function Person($person) {
+	global $person;
+    foreach ($person as $persons) {
+		return $persons;
 	}
 }
 
-function PersonDay($day) {
-	foreach (array_merge($day, $person) as $element) {
-		echo "$element test <br />";
+function Days($day) {
+	global $day;
+	foreach ($day as $days) {
+		return $days;
+	}
+}
+
+function Years($year) {
+	global $year;
+	foreach ($year as $years) {
+		return $years;
+	}
+}
+
+function MakeMonth($month) {
+	global $persons;
+	global $days;
+	global $years;
+	$person = Person($persons);
+	$day = Days($days);
+	$year = Years($years);
+	foreach ($month as $months) { 
+		echo '<h1>', $months = date('F', mktime(0, 0, 0, $months, 10)), '</h1>'; echo "<br/>";
+		echo "$person \n\r\t $day \n\r\t $year";
 	}
 }

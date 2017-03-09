@@ -9,7 +9,6 @@
 </head>
 
 <body>
-<h1><?php echo MakeMonth($month);?> </h1>
-<h2><?php echo PersonDay($day);?> </h2>
+<?php echo MakeMonth($month);?>
 </body>
 </html>
