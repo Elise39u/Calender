@@ -18,3 +18,15 @@ if ($link->connect_errno) {
 		array_push($year, $row['year']);
 	}
 }
+
+function MakeMonth($month) {
+	foreach ($month as $months) { 
+		echo $months = date('F', mktime(0, 0, 0, $months, 10)); echo "<br/>";
+	}
+}
+
+function PersonDay($day) {
+	foreach (array_merge($day, $person) as $element) {
+		echo "$element test <br />";
+	}
+}
