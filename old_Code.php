@@ -16,3 +16,57 @@
 </html>
 
 echo '<a href=update.php?id=$id target="."_blank".">x</a>', "<br/>"; -->
+
+$persons = array();
+$days = array();
+$months = array();
+$years = array();
+$ids  = array();
+
+function Person($persons) {
+	return implode(" ",$persons);
+	/*
+	global $persons;
+    foreach ($persons as $person) {
+    	 echo "$person";
+		 return $person;
+	}
+	*/
+}
+
+function Days($days) {
+	return implode(" ",$days);
+	/*
+	global $day;
+	foreach ($days as $day) {
+		 echo "$day";
+		 return $day;
+	}
+	*/
+}
+function Years($years) {
+	return implode(" ",$years);
+	/*
+	global $years;
+	foreach ($years as $year) {
+	var_dump($year);
+		// echo "$year";
+		 return array_values($year);
+	}
+	*/
+}
+
+function MakeMonth($months) {
+	global $persons;
+	global $days;
+	global $years;
+	$person = Person($persons);
+	$day = Days($days);
+	$year = Years($years);
+	$filteredMonths = array_unique($months);
+
+	foreach ($filteredMonths as $month) { 
+		echo '<h1>', $month = date('F', mktime(0, 0, 0, $month, 10)), '</h1>'; echo "<br/>";
+		echo "$person <br /> \n\r\t $day <br />\n\r\t $year";
+	}
+}

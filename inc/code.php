@@ -1,9 +1,10 @@
 <?php
-$person = array();
-$day = array();
-$month = array();
-$year = array();
-$ids  = array();
+$monthNames = array(
+	'Onbekend', 'Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus',
+	'September', 'Oktober', 'November', 'December'
+);
+
+$birthdays =  array();
 
 $link = mysqli_connect('localhost', 'root', '', 'calendar');
 if ($link->connect_errno) {
@@ -11,44 +12,26 @@ if ($link->connect_errno) {
 } else {
 	$res = $link->query("SELECT * FROM birthdays ORDER BY month ASC");
 	while ($row = $res->fetch_assoc()) {
-		array_push($ids, $row['id']);
-		array_push($person, $row['person']);
-		array_push($day, $row['day']);
-		array_push($month, $row['month']);
-		array_push($year, $row['year']);
+		array_push($birthdays, $row);
 	}
 }
 
-function Person($person) {
-	global $person;
-    foreach ($person as $persons) {
-		return $persons;
-	}
-}
+function GetData($birthdays, $monthNames){
+	$lastmonth = '';
+	$lastday = '';
+	foreach ($birthdays as $birthday) {
+			if ($birthday['month'] != $lastmonth) {
+				echo "<h1>" . $monthNames[$birthday['month']] . "</h1>";
+			if ($birthday['day'] != $lastday) {
+				echo '<h2>' . $birthday['day'] . '</h2>';
+    		}
+		}
 
-function Days($day) {
-	global $day;
-	foreach ($day as $days) {
-		return $days;
-	}
-}
-
-function Years($year) {
-	global $year;
-	foreach ($year as $years) {
-		return $years;
-	}
-}
-
-function MakeMonth($month) {
-	global $persons;
-	global $days;
-	global $years;
-	$person = Person($persons);
-	$day = Days($days);
-	$year = Years($years);
-	foreach ($month as $months) { 
-		echo '<h1>', $months = date('F', mktime(0, 0, 0, $months, 10)), '</h1>'; echo "<br/>";
-		echo "$person \n\r\t $day \n\r\t $year";
-	}
+		$id = $birthday['id'];
+		echo "<p> <a href='update.php?id=" . $id . "'>" . $birthday['person'] . "</a>";
+		echo "<a href='delete.php?id=" . $id . "'>X</a> </p>";
+		
+		$lastmonth = $birthday['month'];
+		$lastday = $birthday['day'];
+	};
 }

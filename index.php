@@ -9,6 +9,9 @@
 </head>
 
 <body>
-<?php echo MakeMonth($month);?>
+
+<?php  echo GetData($birthdays, $monthNames); ?>
+<p> <a href="insert.php"> Add a birthday </a></p>
+
 </body>
 </html>
