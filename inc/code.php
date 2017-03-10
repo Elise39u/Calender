@@ -22,13 +22,13 @@ function GetData($birthdays, $monthNames){
 	foreach ($birthdays as $birthday) {
 			if ($birthday['month'] != $lastmonth) {
 				echo "<h1>" . $monthNames[$birthday['month']] . "</h1>";
+			}
 			if ($birthday['day'] != $lastday) {
 				echo '<h2>' . $birthday['day'] . '</h2>';
     		}
-		}
 
 		$id = $birthday['id'];
-		echo "<p> <a href='update.php?id=" . $id . "'>" . $birthday['person'] . "</a>";
+		echo "<p> <a href='update.php?id=" . $id . "'>" . $birthday['person'] . "" . $birthday['year'] . "</a>";
 		echo "<a href='delete.php?id=" . $id . "'>X</a> </p>";
 		
 		$lastmonth = $birthday['month'];
