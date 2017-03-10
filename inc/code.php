@@ -11,9 +11,7 @@ if ($link->connect_errno) {
     echo "Failed to connect to MySQL: " . $link->connect_error;
 } else {
 	$res = $link->query("SELECT * FROM birthdays ORDER BY month ASC");
-	while ($row = $res->fetch_assoc()) {
-		array_push($birthdays, $row);
-	}
+	$birthdays = $res->fetch_all(PDO::FETCH_NUM);
 }
 
 function GetData($birthdays, $monthNames){
