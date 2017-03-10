@@ -26,7 +26,7 @@ function GetData($birthdays, $monthNames){
     		}
 
 		$id = $birthday['id'];
-		echo "<p> <a href='update.php?id=" . $id . "'>" . $birthday['person'] . "" . $birthday['year'] . "</a>";
+		echo "<p> <a href='update.php?id=" . $id . "'>" . $birthday['person'] . "(" . $birthday['year'] . ")</a>";
 		echo "<a href='delete.php?id=" . $id . "'>X</a> </p>";
 		
 		$lastmonth = $birthday['month'];
